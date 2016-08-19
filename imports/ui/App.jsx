@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
-import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 import FarmPlanner from './FarmPlanner.jsx';
 import FarmList from './FarmList.jsx';
 import InvestorPlan from './InvestorPlan.jsx';
+import Login from './Login.jsx';
 
 
 export default class App extends Component {
@@ -16,8 +16,7 @@ export default class App extends Component {
         <FarmPlanner/>
         <FarmList />
         <InvestorPlan />
-
-        <AccountsUIWrapper />
+        <Login />
       </div>
     );
   }
