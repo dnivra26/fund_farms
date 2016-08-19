@@ -1,17 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import { createContainer } from 'meteor/react-meteor-data';
-import { Tasks } from '../api/tasks.js';
 import AccountsUIWrapper from './AccountsUIWrapper.jsx';
+import FarmPlanner from './FarmPlanner.jsx'
 
-import Task from './Task.jsx';
 
-// App component - represents the whole app
 export default class App extends Component {
-  renderTasks() {
-    return this.props.tasks.map((task) => (
-      <Task key={task._id} task={task} />
-    ));
-  }
 
   render() {
     return (
@@ -19,22 +11,10 @@ export default class App extends Component {
         <header>
           <h1>Todo List</h1>
         </header>
+        <FarmPlanner/>
 
-        <ul>
-          {this.renderTasks()}
-        </ul>
         <AccountsUIWrapper />
       </div>
     );
   }
 }
-
-App.propTypes = {
-  tasks: PropTypes.array.isRequired,
-};
-
-export default createContainer(() => {
-  return {
-    tasks: Tasks.find({}).fetch(),
-  };
-}, App);
