@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Tasks } from '../api/tasks.js';
+import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 
 import Task from './Task.jsx';
 
@@ -22,6 +23,7 @@ export default class App extends Component {
         <ul>
           {this.renderTasks()}
         </ul>
+        <AccountsUIWrapper />
       </div>
     );
   }
