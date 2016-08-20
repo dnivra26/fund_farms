@@ -39,6 +39,7 @@ class InvestorPlan extends Component {
   }
 
   render() {
+
     const plan = _.find(this.props.plans, { crop: this.props.params.cropId });
     const investments = Investments.find({}).fetch();
     const planInvestMentAmount = _.chain(investments)
@@ -52,6 +53,8 @@ class InvestorPlan extends Component {
           <div>TOTAL AMOUNT: {plan.amount}</div>
           <div>AMOUNT INVESTED: {planInvestMentAmount}</div>
           <div>AMOUNT REMAINING: {plan.amount - planInvestMentAmount}</div>
+          <div>Percentage complete: {planInvestMentAmount*100/plan.amount} %</div>
+          <div>No of Backers: {_.filter(investments, (investment) => investment.planId === plan._id).length}</div>
         </div>
         <div>
           Amount <input type="text" value={this.state.amount} onChange={(event) => this.handleChange(event.target.value)} />
