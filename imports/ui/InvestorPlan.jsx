@@ -22,13 +22,16 @@ class InvestorPlan extends Component {
       userId: this.props.params.userId,
       createdAt: new Date()
     });
-    HTTP.call("POST", "http://localhost:8080/payments/"+ this.props.params.userId +"/create",
+    HTTP.call("POST", "http://128.199.169.123/payments/"+ this.props.params.userId +"/create",
       {params: {amount: this.state.amount, purpose: "Farming Chennai"}}, function(error, result){
           if(!error) {
             urlToRoute = JSON.parse(result.content).payment_request.longurl
             window.location.assign(urlToRoute);
           }
       });
+    //twilio call
+    HTTP.call("POST", "http://128.199.169.123/notify_farmer", {params: {to_number: '+917358016864'}}, () => {});
+    HTTP.call("POST", "http://128.199.169.123/sms", {params: {from: '+15123944867', to: '+917358016864', message: `An amount of ${this.state.amount} got credited for ${plan.crop}`}}, () => {});
   }
 
 
