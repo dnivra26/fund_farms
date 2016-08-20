@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { Investments } from '../api/Investments.js';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Plans } from '../api/plans.js';
+import { HTTP } from 'meteor/http'
 import _ from 'lodash';
 
 class InvestorPlan extends Component {
@@ -20,8 +21,16 @@ class InvestorPlan extends Component {
       planId: plan._id,
       userId: this.props.params.userId,
       createdAt: new Date()
-    })
+    });
+    HTTP.call("POST", "http://localhost:8080/payments/"+ this.props.params.userId +"/create",
+      {params: {amount: this.state.amount, purpose: "Farming Chennai"}}, function(error, result){
+          if(!error) {
+            urlToRoute = JSON.parse(result.content).payment_request.longurl
+            window.location.assign(urlToRoute);
+          }
+      });
   }
+
 
   handleChange(value) {
     this.setState({
