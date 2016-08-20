@@ -1,20 +1,21 @@
 import React, { Component, PropTypes } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Plans } from '../api/plans.js';
+import _ from 'lodash';
 
 class FarmList extends Component {
   onClick(crop){
     this.context.router.push(`/user/${this.props.params.userId}/crops/${crop}/investorPlan`);
   }
-  renderPlans() {
-    return this.props.plans.map((plan) => (
+  renderPlans(plans) {
+    return plans.map((plan) => (
       <li onClick={() => this.onClick(plan.crop)} key={plan._id}>{plan.crop}</li>
     ));
   }
   render() {
     return (
       <ul>
-        {this.renderPlans()}
+        {this.renderPlans(_.filter(this.props.plans, (plan) => plan.status !== 'CLOSED'))}
       </ul>
     )
   }
