@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Plans } from '../api/plans.js';
+import { Investments } from '../api/Investments';
+import { Accounts } from '../api/accounts';
 import _ from 'lodash';
 
 class FarmerPlan extends Component {
@@ -25,6 +27,27 @@ class FarmerPlan extends Component {
         }
       }
     );
+
+    const investments = Investments.find({}).fetch();
+    _.each(investments, (investment) => {
+
+    });
+    _.chain(investments)
+      .filter((investment) => {
+        return investment.planId === plan._id;
+      })
+      .each((investment) => {
+          Accounts.update({
+            _id: investment.userId
+          },
+          {
+            $set: {
+              balance: this.state.amount * investment.amount / plan.amount,
+            }
+          }
+        );
+      })
+      .value();
   }
 
   handleChange(value) {
