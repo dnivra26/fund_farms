@@ -26,7 +26,8 @@ export default class FarmPlanner extends Component {
       months: this.state.months,
       location: this.state.location,
       createdAt: new Date()
-    })
+    });
+      this.context.router.push(`/user/${this.props.params.userId}/farmerFarmList`);
   }
   render() {
     return (
@@ -59,5 +60,11 @@ export default class FarmPlanner extends Component {
 }
 
 FarmPlanner.propTypes = {
-  params: PropTypes.object.isRequired,
+  params: PropTypes.object.isRequired
 };
+
+
+FarmPlanner.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
+
