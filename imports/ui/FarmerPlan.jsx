@@ -61,17 +61,23 @@ class FarmerPlan extends Component {
     return (
       <div>
         <header>Farmer Plan</header>
-        <div>
-            <label>Crop: {plan.crop}</label><br />
-            <label>Total Amount: {plan.amount}</label>
+        <div className="farmer-plan-container plan-container">
+          <div>
+              <label>Crop: {plan.crop}</label><br />
+              <label>Total Amount: {plan.amount}</label>
+          </div>
+          <br />
+          <section>
+            <label>CLOSE PLAN:</label><br/>
+            <div className="line-item">
+              <label>Amount: </label>
+              <input type="text" value={this.state.amount} onChange={(event) => this.handleChange(event.target.value)} /><br />
+            </div>
+            <div className="center-wrapper">
+              <button className="center" onClick={() => this.handleClose()}>Close</button>
+            </div>
+          </section>
         </div>
-        <br />
-        <section>
-          <label>CLOSE PLAN:</label><br/>
-          <label>Amount: </label>
-          <input type="text" value={this.state.amount} onChange={(event) => this.handleChange(event.target.value)} /><br />
-          <button onClick={() => this.handleClose()}>Close</button>
-        </section>
       </div>
     )
   }

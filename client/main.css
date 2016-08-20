@@ -58,15 +58,17 @@ button {
     margin: 10px auto;
 }
 
-.buttons-container *{
-    margin: 0 5px;
+.center-wrapper {
+    text-align: center;
 }
 
-.container {
-    max-width: 600px;
-    margin: 0 auto;
-    min-height: 100%;
-    background: white;
+.center {
+    display: inline-block;
+    width: 100px;
+}
+
+.buttons-container *{
+    margin: 0 5px;
 }
 
 #login-buttons {
@@ -86,7 +88,7 @@ header {
 
 .plan-container {
     margin:10px;
-    width: 400px;
+    max-width: 400px;
 }
 
 .line-item {
@@ -98,6 +100,13 @@ header {
 .line-item input {
     position: absolute;
     right: 0;
+}
+
+section {
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 10px;
+    position: relative;
 }
 
 h1 {
