@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Plans } from '../api/plans.js';
+import { Accounts } from '../api/accounts.js';
 import _ from 'lodash';
 
 class FarmList extends Component {
@@ -12,11 +13,14 @@ class FarmList extends Component {
       <li onClick={() => this.onClick(plan.crop)} key={plan._id}>{plan.crop}</li>
     ));
   }
-  render() {
+  render(){
     return (
-      <ul>
-        {this.renderPlans(_.filter(this.props.plans, (plan) => plan.status !== 'CLOSED'))}
-      </ul>
+      <div>
+        <div>{_.find(this.props.accounts, (account) => account._id === this.props.params.userId).balance}</div>
+        <ul>
+          {this.renderPlans(_.filter(this.props.plans, (plan) => plan.status !== 'CLOSED'))}
+        </ul>
+      </div>
     )
   }
 }
@@ -32,6 +36,7 @@ FarmList.contextTypes = {
 
 export default createContainer(() => {
   return {
-    plans: Plans.find({}).fetch(),
+        plans: Plans.find({}).fetch(),
+        accounts: Accounts.find({}).fetch()
   };
 }, FarmList);
