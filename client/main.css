@@ -30,8 +30,12 @@ body {
     width:300px;
 }
 
-.login-container label {
+label {
     color:white;
+}
+
+button {
+    padding: 5px;
 }
 
 .nameBox, .passwordBox, .phoneBox, .Select.roleBox {
@@ -65,6 +69,10 @@ body {
     background: white;
 }
 
+#login-buttons {
+    display: block;
+}
+
 header {
     background: #d2edf4;
     background-image: linear-gradient(to bottom, #d0edf5, #e1e5f0 100%);
@@ -72,8 +80,24 @@ header {
     position: relative;
 }
 
-#login-buttons {
-    display: block;
+.plan {
+    border-radius: 5px;
+}
+
+.edit-plan-container {
+    margin:10px;
+    width: 400px;
+}
+
+.line-item {
+    position: relative;
+    line-height: 25px;
+    margin-bottom: 10px;
+}
+
+.line-item input {
+    position: absolute;
+    right: 0;
 }
 
 h1 {
@@ -105,9 +129,9 @@ form {
 }
 
 ul {
-    margin: 0;
+    margin: 10px;
     padding: 0;
-    background: white;
+    background: transparent;
 }
 
 .delete {
@@ -124,6 +148,8 @@ li {
     list-style: none;
     padding: 15px;
     border-bottom: #eee solid 1px;
+    background: white;
+    margin-bottom: 1px;
 }
 
 li .text {

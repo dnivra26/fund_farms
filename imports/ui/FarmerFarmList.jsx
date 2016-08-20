@@ -12,19 +12,19 @@ class FarmerFarmList extends Component {
   }
   renderPlans(plans) {
     return plans.map((plan) => (
-      <li onClick={() => this.onClick(plan.crop)} key={plan._id}>{plan.crop}</li>
+      <li className="plan" onClick={() => this.onClick(plan.crop)} key={plan._id}>{plan.crop}</li>
     ));
   }
   render() {
     return (
       <div>
-        MY PLANS
+        <header>MY PLANS</header>
         <ul>
           {this.renderPlans(_.filter(this.props.plans, (plan) =>
           plan.userId === this.props.params.userId && plan.status !== 'CLOSED'
           ))}
         </ul>
-        <button label="Create new plan" onClick={()=>this.onNewPlan()} />
+        <button onClick={()=>this.onNewPlan()}>Create new plan</button>
       </div>
     )
   }
