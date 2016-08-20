@@ -14,7 +14,7 @@ Meteor.startup(() => {
     <Router history={browserHistory}>
       <Route path="/" component={Login}/>
       <Route path="/user/:userId/farmList" component={FarmList}/>
-      <Route path="/user/:userId/investorPlan" component={InvestorPlan}/>
+      <Route path="/user/:userId/crops/:cropId/investorPlan" component={InvestorPlan}/>
       <Route path="/user/:userId/farmPlanner" component={FarmPlanner}/>
     </Router>, document.getElementById('render-target'));
 });

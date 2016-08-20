@@ -14,6 +14,7 @@ export default class InvestorPlan extends Component {
     Investments.insert({
       amount: this.state.amount,
       planId: this.props.plan._id,
+      userId: this.props.params.userId,
       createdAt: new Date()
     })
   }
@@ -41,6 +42,7 @@ export default class InvestorPlan extends Component {
 }
 
 InvestorPlan.propTypes = {
+  params: PropTypes.object.isRequired,
   plan: PropTypes.object
 };
 
