@@ -8,7 +8,6 @@ body {
     background-color: #315481;
     background-image: linear-gradient(to bottom, #315481, #918e82 100%);
     background-attachment: fixed;
-    color:white;
 
     position: absolute;
     top: 0;
@@ -29,6 +28,10 @@ body {
     margin:0 auto;
     right:0;
     width:300px;
+}
+
+.login-container label {
+    color:white;
 }
 
 .nameBox, .passwordBox, .Select.roleBox {
