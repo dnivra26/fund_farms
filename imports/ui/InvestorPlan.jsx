@@ -1,7 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import { Investments } from '../api/Investments.js';
+import { createContainer } from 'meteor/react-meteor-data';
+import { Plans } from '../api/plans.js';
+import _ from 'lodash';
 
-export default class InvestorPlan extends Component {
+class InvestorPlan extends Component {
 
   constructor() {
     super();
@@ -11,9 +14,10 @@ export default class InvestorPlan extends Component {
   }
 
   handleInvest() {
+    const plan = _.find(this.props.plans, { crop: this.props.params.cropId });
     Investments.insert({
       amount: this.state.amount,
-      planId: this.props.plan._id,
+      planId: plan._id,
       userId: this.props.params.userId,
       createdAt: new Date()
     })
@@ -26,11 +30,19 @@ export default class InvestorPlan extends Component {
   }
 
   render() {
+    const plan = _.find(this.props.plans, { crop: this.props.params.cropId });
+    const investments = Investments.find({}).fetch();
+    const planInvestMentAmount = _.chain(investments)
+      .filter((investment) => investment.planId === plan._id )
+      .sumBy((investment) => investment.amount)
+      .value();
     return (
       <div>
         <div>
-          {this.props.plan.crop}
-          {this.props.plan.amount}
+          <div>CROP {plan.crop}</div>
+          <div>TOTAL AMOUNT: {plan.amount}</div>
+          <div>AMOUNT INVESTED: {planInvestMentAmount}</div>
+          <div>AMOUNT REMAINING: {plan.amount - planInvestMentAmount}</div>
         </div>
         <div>
           Amount <input type="text" value={this.state.amount} onChange={(event) => this.handleChange(event.target.value)} />
@@ -43,13 +55,12 @@ export default class InvestorPlan extends Component {
 
 InvestorPlan.propTypes = {
   params: PropTypes.object.isRequired,
-  plan: PropTypes.object
+  plans: PropTypes.array.isRequired
 };
 
-InvestorPlan.defaultProps = {
-  plan: {
-    _id : "NGhfEH9adutvsp7ZF",
-    crop : "wheat",
-    amount : 9090
-  }
-};
+export default createContainer(() => {
+  console.log('hi',Plans.find({}).fetch());
+  return {
+    plans: Plans.find({}).fetch(),
+  };
+}, InvestorPlan);
