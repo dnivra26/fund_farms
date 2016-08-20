@@ -9,13 +9,11 @@ import InvestorPlan from '../imports/ui/InvestorPlan.jsx';
 import FarmerFarmList from '../imports/ui/FarmerFarmList.jsx';
 import FarmerPlan from '../imports/ui/FarmerPlan.jsx';
 import Login from '../imports/ui/Login.jsx';
-import Map from '../imports/ui/Map.jsx';
-
 
 Meteor.startup(() => {
   render(
     <Router history={browserHistory}>
-      <Route path="/" component={Map}/>
+      <Route path="/" component={Login}/>
       <Route path="/user/:userId/farmList" component={FarmList}/>
       <Route path="/user/:userId/crops/:cropId/investorPlan" component={InvestorPlan}/>
 

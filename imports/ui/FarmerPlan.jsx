@@ -12,14 +12,19 @@ class FarmerPlan extends Component {
     };
   }
 
-  handleInvest() {
+  handleClose() {
     const plan = _.find(this.props.plans, { crop: this.props.params.cropId });
-    Investments.insert({
-      amount: this.state.amount,
-      planId: plan._id,
-      userId: this.props.params.userId,
-      createdAt: new Date()
-    })
+    Plans.update(
+      {
+        _id: plan._id
+      },
+      {
+        $set: {
+          finalAmount: this.state.amount,
+          status: 'CLOSED'
+        }
+      }
+    );
   }
 
   handleChange(value) {
@@ -39,7 +44,7 @@ class FarmerPlan extends Component {
         <div>CLOSE PLAN</div>
         <div>
           Amount <input type="text" value={this.state.amount} onChange={(event) => this.handleChange(event.target.value)} />
-          <button label="Close" onClick={() => this.handleInvest()} />
+          <button label="Close" onClick={() => this.handleClose()} />
         </div>
       </div>
     )

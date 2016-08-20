@@ -20,7 +20,9 @@ class FarmerFarmList extends Component {
       <div>
         MY PLANS
         <ul>
-          {this.renderPlans(_.filter(this.props.plans, (plan) => plan.userId === this.props.params.userId ))}
+          {this.renderPlans(_.filter(this.props.plans, (plan) =>
+          plan.userId === this.props.params.userId && plan.status !== 'CLOSED'
+          ))}
         </ul>
         <button label="Create new plan" onClick={()=>this.onNewPlan()} />
       </div>
