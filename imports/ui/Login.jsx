@@ -57,28 +57,30 @@ export default class Login extends Component {
 
   render() {
     return (
-      <div>
-        <div>
-          Name
-          <input value={this.state.name}
+      <div className="login-container">
+        <div className="nameBox-container">
+          <label>Name: </label>
+          <input className="nameBox" value={this.state.name}
                  onChange={(event) => this.handleChange('name', event.target.value)}/>
         </div>
-        <div>
-          Password
-          <input value={this.state.password}
+        <div className="passwordBox-container">
+          <label>Password: </label>
+          <input className="passwordBox" value={this.state.password}
                  onChange={(event) => this.handleChange('password', event.target.value)}/>
         </div>
-        <div>
-          Role
+        <div className="roleBox-container">
+          <label>Role:</label>
           <Select
+            className="roleBox"
             value={this.state.role}
             options={options}
             onChange={(value) => this.logChange(value)}
           />
         </div>
-        <button className="btn btn-md btn-default" label="sign in" onClick={() => this.signInUser()} >Sign In</button>
-        <button className="btn btn-md btn-default" label="sign up" onClick={() => this.createUser()} >Sign Up</button>
-
+        <div className="buttons-container">
+          <button className="btn btn-md btn-default" label="sign in" onClick={() => this.signInUser()} >Sign In</button>
+          <button className="btn btn-md btn-default" label="sign up" onClick={() => this.createUser()} >Sign Up</button>
+        </div>
       </div>
     )
   }
