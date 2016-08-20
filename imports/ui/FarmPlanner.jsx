@@ -20,6 +20,7 @@ export default class FarmPlanner extends Component {
     Plans.insert({
       crop: this.state.crop,
       amount: this.state.amount,
+      userId: this.props.params.userId,
       createdAt: new Date()
     })
   }
@@ -41,3 +42,7 @@ export default class FarmPlanner extends Component {
     );
   }
 }
+
+FarmPlanner.propTypes = {
+  params: PropTypes.object.isRequired,
+};

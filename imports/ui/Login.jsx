@@ -36,7 +36,7 @@ export default class Login extends Component {
     }).fetch();
     if ( user.length === 1 ) {
       if ( user[0].role.value === 'farmer') {
-        this.context.router.push(`/user/${user[0]._id}/farmPlanner`);
+        this.context.router.push(`/user/${user[0]._id}/farmerFarmList`);
       } else {
         this.context.router.push(`/user/${user[0]._id}/farmList`);
       }
