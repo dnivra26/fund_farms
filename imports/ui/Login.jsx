@@ -28,22 +28,27 @@ export default class Login extends Component {
       balance: 0,
       phone: this.state.phone,
       createdAt: new Date()
-    })
+    });
+    this.signInUser();
   }
 
-  signInUser() {
-    const user = Accounts.find({
-      name: this.state.name,
-      password: this.state.password
-    }).fetch();
-    if ( user.length === 1 ) {
-      if ( user[0].role === 'farmer') {
-        this.context.router.push(`/user/${user[0]._id}/farmerFarmList`);
-      } else {
-        this.context.router.push(`/user/${user[0]._id}/farmList`);
-      }
+    signInUser() {
+        const users = Accounts.find({
+            name: this.state.name,
+            password: this.state.password
+        }).fetch();
+        this.goToHomePage(users)
     }
-  }
+
+   goToHomePage(user) {
+        if (user.length === 1) {
+            if (user[0].role === 'farmer') {
+                this.context.router.push(`/user/${user[0]._id}/farmerFarmList`);
+            } else {
+                this.context.router.push(`/user/${user[0]._id}/farmList`);
+            }
+        }
+    };
 
   logChange(val) {
     this.setState({
