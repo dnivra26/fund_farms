@@ -66,13 +66,13 @@ export default class Login extends Component {
                  onChange={(event) => this.handleChange('name', event.target.value)}/>
         </div>
         <div className="phoneBox-container">
-          <label>Phone Number: </label>
+          <label>Ph. Number: </label>
           <input className="phoneBox" value={this.state.phone}
                  onChange={(event) => this.handleChange('phone', event.target.value)}/>
         </div>
         <div className="passwordBox-container">
           <label>Password: </label>
-          <input className="passwordBox" value={this.state.password}
+          <input className="passwordBox" value={this.state.password} type="password"
                  onChange={(event) => this.handleChange('password', event.target.value)}/>
         </div>
         <div className="roleBox-container">
