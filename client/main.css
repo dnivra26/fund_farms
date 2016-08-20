@@ -123,3 +123,8 @@ header .hide-completed {
         padding-bottom: 5px;
     }
 }
+
+#mapHeight {
+    width: 500px;
+    height: 500px;
+}
