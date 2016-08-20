@@ -64,34 +64,37 @@ export default class Login extends Component {
 
   render() {
     return (
-      <div className="login-container">
-        <div className="nameBox-container">
-          <label>Name: </label>
-          <input className="nameBox" value={this.state.name}
-                 onChange={(event) => this.handleChange('name', event.target.value)}/>
-        </div>
-        <div className="phoneBox-container">
-          <label>Ph. Number: </label>
-          <input className="phoneBox" value={this.state.phone}
-                 onChange={(event) => this.handleChange('phone', event.target.value)}/>
-        </div>
-        <div className="passwordBox-container">
-          <label>Password: </label>
-          <input className="passwordBox" value={this.state.password} type="password"
-                 onChange={(event) => this.handleChange('password', event.target.value)}/>
-        </div>
-        <div className="roleBox-container">
-          <label>Role:</label>
-          <Select
-            className="roleBox"
-            value={this.state.role}
-            options={options}
-            onChange={(value) => this.logChange(value)}
-          />
-        </div>
-        <div className="buttons-container">
-          <button className="btn btn-md btn-default" label="sign in" onClick={() => this.signInUser()} >Sign In</button>
-          <button className="btn btn-md btn-default" label="sign up" onClick={() => this.createUser()} >Sign Up</button>
+      <div>
+        <header>Farm Funding</header>
+        <div className="login-container">
+          <div className="nameBox-container">
+            <label>Name: </label>
+            <input className="nameBox" value={this.state.name}
+                   onChange={(event) => this.handleChange('name', event.target.value)}/>
+          </div>
+          <div className="phoneBox-container">
+            <label>Ph. Number: </label>
+            <input className="phoneBox" value={this.state.phone}
+                   onChange={(event) => this.handleChange('phone', event.target.value)}/>
+          </div>
+          <div className="passwordBox-container">
+            <label>Password: </label>
+            <input className="passwordBox" value={this.state.password} type="password"
+                   onChange={(event) => this.handleChange('password', event.target.value)}/>
+          </div>
+          <div className="roleBox-container">
+            <label>Role:</label>
+            <Select
+              className="roleBox"
+              value={this.state.role}
+              options={options}
+              onChange={(value) => this.logChange(value)}
+            />
+          </div>
+          <div className="buttons-container">
+            <button className="btn btn-md btn-default" label="sign in" onClick={() => this.signInUser()} >Sign In</button>
+            <button className="btn btn-md btn-default" label="sign up" onClick={() => this.createUser()} >Sign Up</button>
+          </div>
         </div>
       </div>
     )
