@@ -16,7 +16,8 @@ class FarmList extends Component {
   render(){
     return (
       <div>
-        <div>{_.find(this.props.accounts, (account) => account._id === this.props.params.userId).balance}</div>
+        <header>Farm List</header>
+        <div><label>Balance: Rs. {_.find(this.props.accounts, (account) => account._id === this.props.params.userId).balance}</label></div>
         <ul>
           {this.renderPlans(_.filter(this.props.plans, (plan) => plan.status !== 'CLOSED'))}
         </ul>

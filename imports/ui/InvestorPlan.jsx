@@ -51,17 +51,16 @@ class InvestorPlan extends Component {
       .value();
     return (
       <div>
-        <div>
-          <div>CROP {plan.crop}</div>
-          <div>TOTAL AMOUNT: {plan.amount}</div>
-          <div>AMOUNT INVESTED: {planInvestMentAmount}</div>
-          <div>AMOUNT REMAINING: {plan.amount - planInvestMentAmount}</div>
-          <div>Percentage complete: {planInvestMentAmount*100/plan.amount} %</div>
-          <div>No of Backers: {_.filter(investments, (investment) => investment.planId === plan._id).length}</div>
-        </div>
-        <div>
-          Amount <input type="text" value={this.state.amount} onChange={(event) => this.handleChange(event.target.value)} />
-          <button label="Invest" onClick={() => this.handleInvest()} />
+        <header>Investor Plan</header>
+        <div className="investor-plan-container plan-container">
+          <label>CROP {plan.crop}</label><br />
+          <label>TOTAL AMOUNT: {plan.amount}</label><br />
+          <label>AMOUNT INVESTED: {planInvestMentAmount}</label><br />
+          <label>AMOUNT REMAINING: {plan.amount - planInvestMentAmount}</label><br />
+          <label>Percentage complete: {planInvestMentAmount*100/plan.amount} %</label><br />
+          <label>No of Backers: {_.filter(investments, (investment) => investment.planId === plan._id).length}</label><br />
+          <label>Amount: </label> <input type="text" value={this.state.amount} onChange={(event) => this.handleChange(event.target.value)} />
+          <button label="Invest" onClick={() => this.handleInvest()}>Invest</button>
         </div>
       </div>
     )

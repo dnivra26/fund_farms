@@ -60,15 +60,18 @@ class FarmerPlan extends Component {
     const plan = _.find(this.props.plans, { crop: this.props.params.cropId });
     return (
       <div>
+        <header>Farmer Plan</header>
         <div>
-          <div>CROP {plan.crop}</div>
-          <div>TOTAL AMOUNT: {plan.amount}</div>
+            <label>Crop: {plan.crop}</label><br />
+            <label>Total Amount: {plan.amount}</label>
         </div>
-        <div>CLOSE PLAN</div>
-        <div>
-          Amount <input type="text" value={this.state.amount} onChange={(event) => this.handleChange(event.target.value)} />
-          <button label="Close" onClick={() => this.handleClose()} />
-        </div>
+        <br />
+        <section>
+          <label>CLOSE PLAN:</label><br/>
+          <label>Amount: </label>
+          <input type="text" value={this.state.amount} onChange={(event) => this.handleChange(event.target.value)} /><br />
+          <button onClick={() => this.handleClose()}>Close</button>
+        </section>
       </div>
     )
   }

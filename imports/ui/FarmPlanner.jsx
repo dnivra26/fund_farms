@@ -33,7 +33,7 @@ export default class FarmPlanner extends Component {
     return (
       <div>
         <header>New Plan</header>
-        <div className="edit-plan-container">
+        <div className="edit-plan-container plan-container">
           <div className="line-item">
             <label>Crop</label>
             <input type="text" value={this.state.crop} onChange={(event) => this.handleChange('crop', event.target.value)} />
