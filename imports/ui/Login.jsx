@@ -76,8 +76,8 @@ export default class Login extends Component {
             onChange={(value) => this.logChange(value)}
           />
         </div>
-        <button label="sign in" onClick={() => this.signInUser()} />
-        <button label="sign up" onClick={() => this.createUser()} />
+        <button className="btn btn-md btn-default" label="sign in" onClick={() => this.signInUser()} >Sign In</button>
+        <button className="btn btn-md btn-default" label="sign up" onClick={() => this.createUser()} >Sign Up</button>
 
       </div>
     )
