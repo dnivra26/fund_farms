@@ -30,11 +30,16 @@ export default class Login extends Component {
   }
 
   signInUser() {
-    if ( Accounts.find({
+    const user = Accounts.find({
       name: this.state.name,
       password: this.state.password
-    }).fetch().length === 1 ) {
-      console.log('sign in successful');
+    }).fetch();
+    if ( user.length === 1 ) {
+      if ( user[0].role.value === 'farmer') {
+        this.context.router.push(`/user/${user[0]._id}/farmPlanner`);
+      } else {
+        this.context.router.push(`/user/${user[0]._id}/farmList`);
+      }
     }
   }
 
@@ -78,3 +83,7 @@ export default class Login extends Component {
     )
   }
 }
+
+Login.contextTypes = {
+  router: React.PropTypes.object.isRequired,
+};
