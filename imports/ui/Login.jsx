@@ -15,7 +15,8 @@ export default class Login extends Component {
     this.state = {
       name: '',
       password: '',
-      role: 'farmer'
+      role: 'farmer',
+      phone: ''
     }
   }
 
@@ -25,6 +26,7 @@ export default class Login extends Component {
       password: this.state.password,
       role: this.state.role,
       balance: 0,
+      phone: this.state.phone,
       createdAt: new Date()
     })
   }
@@ -62,6 +64,11 @@ export default class Login extends Component {
           <label>Name: </label>
           <input className="nameBox" value={this.state.name}
                  onChange={(event) => this.handleChange('name', event.target.value)}/>
+        </div>
+        <div className="phoneBox-container">
+          <label>Phone Number: </label>
+          <input className="phoneBox" value={this.state.phone}
+                 onChange={(event) => this.handleChange('phone', event.target.value)}/>
         </div>
         <div className="passwordBox-container">
           <label>Password: </label>

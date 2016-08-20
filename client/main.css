@@ -34,14 +34,14 @@ body {
     color:white;
 }
 
-.nameBox, .passwordBox, .Select.roleBox {
+.nameBox, .passwordBox, .phoneBox, .Select.roleBox {
     width:200px;
     position: absolute;
     right: 0;
     top: 0;
 }
 
-.nameBox-container, .passwordBox-container, .roleBox-container {
+.nameBox-container, .passwordBox-container, .phoneBox-container, .roleBox-container {
     height: 40px;
     position: relative;
     line-height: 30px;
